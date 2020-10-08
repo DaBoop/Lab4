@@ -232,25 +232,13 @@ namespace StatisticClass
         {
             return list.getItemCount(); // Зачем, а главное почему?
         }
-    } // Представьте что тут есть перегрузки для других типов, либо перегрузки каста в другие типы для листа, мне за это не платят
 
-
-
-
-}
-
-namespace Lab4
-{
-    using StatisticClass;
-    using List;
-    public static class Extensions
-    {
         public static string LastWord(this string str)
         {
             string[] rez;
 
             rez = str.Split();
-            return rez[rez.Length-1];
+            return rez[rez.Length - 1];
         }
 
         public static bool AreThereRepeats<T>(this List<T> list)
@@ -271,8 +259,20 @@ namespace Lab4
             }
             // если ни разу не выбило - повторов нет
             return false;
+            
         }
-    }
+    } // Представьте что тут есть перегрузки для других типов, либо перегрузки каста в другие типы для листа, мне за это не платят
+
+
+
+
+}
+
+namespace Lab4
+{
+    using StatisticClass;
+    using List;
+   
 
     class Program
     {
