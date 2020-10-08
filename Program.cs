@@ -16,12 +16,20 @@ namespace Lab4
             {
                 Item = item;
             }
+
+            public bool IsNull()
+            {
+                if (this == null)
+                    return true;
+                else
+                    return false;
+            }
         }
 
 
         class List<T>
         {
-            int itemCount;
+            private int itemCount;
             private Node<T> head;
 
             Node<T> Head { get => head; set => head = value; }
@@ -31,14 +39,24 @@ namespace Lab4
                 itemCount = 0;
             }
 
+            public bool IsEmpty()
+            {
+                if (itemCount == 0)
+                    return true;
+                else
+                    return false;
+            }
+
+            public int getItemCount() => itemCount;
             public void Add(T val)
             {
                 Node<T> current = Head;
-                while (current.Next != null)
+                while (!current.Next.IsNull())
                 {
                     current = current.Next;
                 }
                 current.Next = new Node<T>(val);
+                itemCount++;
             }
             public T this[int i]
             {
