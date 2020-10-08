@@ -67,7 +67,7 @@ namespace List
 
         public Owner owner { get; } 
         public Date date { get; } 
-        Node<T> Head { get => head; }
+        public Node<T> Head { get => head; }
 
         public List()  
         {
