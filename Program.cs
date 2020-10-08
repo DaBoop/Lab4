@@ -59,16 +59,34 @@ namespace Lab4
 
                 return c;
                 }
-
+            public override string ToString()
+            {
+                Node<T> current = head;
+                string rez = System.Convert.ToString(head.Item);
+                for(int i = 1; i < getItemCount(); i++)
+                {
+                    current = current.Next;
+                    rez += " " + System.Convert.ToString(current.Item);
+                }
+                return rez;
+            }
             public int getItemCount() => itemCount;
             public void Add(T val)
             {
-                Node<T> current = Head;
-                while (!current.Next.IsNull())
+                if (head == null)
                 {
-                    current = current.Next;
+                    head = new Node<T>(val);
                 }
-                current.Next = new Node<T>(val);
+                else
+                {
+                    Node<T> current = Head;
+                    for (int i = 1; i < getItemCount(); i++)
+                    {
+                        current = current.Next;
+                    }
+                    current.Next = new Node<T>(val);
+
+                }
                 itemCount++;
             }
             public T this[int i]
@@ -76,7 +94,7 @@ namespace Lab4
                 get
                 {
                     Node<T> current = Head;
-                    for (int j = 0; i < j; j++)
+                    for (int j = 0; j < i; j++)
                     {
                         current = current.Next;
                     }
@@ -85,7 +103,7 @@ namespace Lab4
                 set
                 {
                     Node<T> current = Head;
-                    for (int j = 0; i < j; j++)
+                    for (int j = 0; j < i; j++)
                     {
                         current = current.Next;
                     }
@@ -99,13 +117,21 @@ namespace Lab4
         static void Main(string[] args)
         {
 
-       /*     List<int> A = new List<int>();
+            List<int> A = new List<int>();
             List<int> B = new List<int>();
+            List<int> C = new List<int>();
+
 
             A.Add(1);
             A.Add(2);
-            A.Add(3));
-            */
+            A.Add(3);
+            B.Add(4);
+            B.Add(5);
+            B.Add(6);
+            C = A + B;
+            Console.WriteLine(A);
+            Console.WriteLine(B);
+            Console.WriteLine(C);
 
 
 
