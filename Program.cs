@@ -191,10 +191,57 @@ namespace List
     }
 }
 
+namespace StatisticClass
+{
+    using List;
+    
+    public static class StatisticClass
+    {
+        static public int Summary(List<int> list)
+        {
+            Node<int> current = list.Head;
+            int rez = 0;
+            for (int i = 0; i < list.getItemCount(); i++)
+            {
+                rez += current.Item;
+                current = current.Next;
+            }
 
+            return rez;
+        }
+
+        static public int Amplitude(List<int> list)
+        {
+            Node<int> current = list.Head;
+            int max = list[0];
+            int min = list[0];
+            for (int i = 0; i < list.getItemCount(); i++)
+            {
+                if (max < list[i])
+                    max = list[i];
+                if (min > list[i])
+                    min = list[i];
+
+                current = current.Next;
+            }
+
+            return max - min;
+        }
+
+        static public int getItemCount<T>(List<T> list)
+        {
+            return list.getItemCount(); // Зачем, а главное почему?
+        }
+    } // Представьте что тут есть перегрузки для других типов, либо перегрузки каста в другие типы для листа, мне за это не платят
+
+
+
+
+}
 
 namespace Lab4
 {
+    using StatisticClass;
     using List;
     public static class Extensions
     {
@@ -264,6 +311,10 @@ namespace Lab4
 
             Console.WriteLine($"{A.date.Day}.{A.date.Month}.{A.date.Year}");
             Console.WriteLine($"{A.owner.Id}.{A.owner.Name}.{A.owner.Organization}");
+
+            Console.WriteLine($"Сумма 1 2 3 4 1 = {StatisticClass.Summary(A)}");
+            Console.WriteLine($"Амплитуда 1 2 3 4 1 = {StatisticClass.Amplitude(A)}");
+            Console.WriteLine($"Количество элементов 1 2 3 4 1 = {StatisticClass.getItemCount(A)}");
 
 
 
