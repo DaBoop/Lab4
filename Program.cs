@@ -34,10 +34,7 @@ namespace Lab4
 
             Node<T> Head { get => head; set => head = value; }
 
-            public List()
-            {
-                itemCount = 0;
-            }
+            public List() => itemCount = 0;
 
             public bool IsEmpty()
             {
