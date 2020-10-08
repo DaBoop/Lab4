@@ -59,6 +59,14 @@ namespace Lab4
 
                 return c;
                 }
+
+            public static List<T> operator--(List<T> a)
+            {
+                a.itemCount--;
+                a.Head = a.Head.Next;
+                return a;
+            } 
+
             public override string ToString()
             {
                 Node<T> current = head;
@@ -132,6 +140,8 @@ namespace Lab4
             Console.WriteLine(A);
             Console.WriteLine(B);
             Console.WriteLine(C);
+            Console.WriteLine(--C);
+
 
 
 
