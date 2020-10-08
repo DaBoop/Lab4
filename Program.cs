@@ -67,7 +67,7 @@ namespace List
 
         public Owner owner { get; } 
         public Date date { get; } 
-        Node<T> Head { get => head; set => head = value; }
+        Node<T> Head { get => head; }
 
         public List()  
         {
@@ -103,7 +103,7 @@ namespace List
         public static List<T> operator --(List<T> a)
         {
             a.itemCount--;
-            a.Head = a.Head.Next;
+            a.head = a.Head.Next;
             return a;
         }
 
@@ -190,6 +190,7 @@ namespace List
 
     }
 }
+
 
 
 namespace Lab4
