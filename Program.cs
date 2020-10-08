@@ -38,6 +38,7 @@ namespace Lab4
                 {
                     current = current.Next;
                 }
+                current.Next = new Node<T>(val);
             }
             public T this[int i]
             {
