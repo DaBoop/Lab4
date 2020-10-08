@@ -43,6 +43,15 @@ namespace Lab4
                 else
                     return false;
             }
+            public static List<T> operator+ (List<T> a, List<T> b)
+                {
+                for (int i = 0; i < b.getItemCount(); i++)
+                {
+                    a.Add(b[i]);
+                }
+
+                return a;
+                }
 
             public int getItemCount() => itemCount;
             public void Add(T val)
