@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Versioning;
 
 namespace Lab4
 {
+    
     class Program
     {
+
         public class Node<T>
         {
             public T Item { get; set; }
@@ -25,8 +28,6 @@ namespace Lab4
                     return false;
             }
         }
-
-
         class List<T>
         {
             private int itemCount;
@@ -43,7 +44,7 @@ namespace Lab4
                 else
                     return false;
             }
-            public static List<T> operator+ (List<T> a, List<T> b)
+            public static List<T> operator + (List<T> a, List<T> b)
                 {
                 List<T> c = new List<T>();
 
@@ -60,12 +61,40 @@ namespace Lab4
                 return c;
                 }
 
-            public static List<T> operator--(List<T> a)
+            public static List<T> operator -- (List<T> a)
             {
                 a.itemCount--;
                 a.Head = a.Head.Next;
                 return a;
-            } 
+            }
+
+            public static bool operator == (List<T> a, List<T> b)
+            {
+                if (a.getItemCount() == b.getItemCount())
+                {
+                    for (int i = 0; i < a.getItemCount(); i++)
+                    {
+                        if (!Object.Equals(a[i],b[i])) return false;
+                    }
+                    return true;
+                }
+                else
+                    return false;
+            }
+
+            public static bool operator != (List<T> a, List<T> b)
+            {
+                if (a.getItemCount() == b.getItemCount())
+                {
+                    for (int i = 0; i < a.getItemCount(); i++)
+                    {
+                        if (Object.Equals(a, b)) return true;
+                    }
+                    return false;
+                }
+                else
+                    return true;
+            }
 
             public override string ToString()
             {
@@ -141,6 +170,11 @@ namespace Lab4
             Console.WriteLine(B);
             Console.WriteLine(C);
             Console.WriteLine(--C);
+            --C; --C; // 4 5 6
+            Console.WriteLine(C);
+            Console.WriteLine(A == B);
+            Console.WriteLine(B == C); 
+
 
 
 
