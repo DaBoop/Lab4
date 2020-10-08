@@ -45,12 +45,19 @@ namespace Lab4
             }
             public static List<T> operator+ (List<T> a, List<T> b)
                 {
-                for (int i = 0; i < b.getItemCount(); i++)
+                List<T> c = new List<T>();
+
+                for (int i = 0; i < a.getItemCount(); i++)
                 {
-                    a.Add(b[i]);
+                    c.Add(a[i]);
                 }
 
-                return a;
+                for (int i = 0; i < b.getItemCount(); i++)
+                {
+                    c.Add(b[i]);
+                }
+
+                return c;
                 }
 
             public int getItemCount() => itemCount;
@@ -91,8 +98,14 @@ namespace Lab4
         }
         static void Main(string[] args)
         {
-            
 
+       /*     List<int> A = new List<int>();
+            List<int> B = new List<int>();
+
+            A.Add(1);
+            A.Add(2);
+            A.Add(3));
+            */
 
 
 
