@@ -4,6 +4,42 @@ using System.Runtime.Versioning;
 
 namespace List
 {
+    // Можно внести внутрь класса листа, но замчем
+    public class Owner
+    {
+        public string Id { get; private set; }
+        public string Name { get; private set; }
+        public string Organization { get; private set; }
+
+        public Owner(string id, string name, string organization)
+        {
+            Id = id;
+            Name = name;
+            Organization = organization;
+        }
+    }
+    
+    public class Date
+    { 
+        public int Day { get; private set; }
+        public int Month { get; private set; }
+        public int Year { get; private set; }
+
+        public Date(int day, int month, int year)
+        {
+            Day = day;
+            Month = month;
+            Year = year;
+        }
+        public Date()
+        {
+           string[] s = System.DateTime.Now.ToString("dd MM yyyy").Split();
+           Day = System.Convert.ToInt32(s[0]);
+           Month = System.Convert.ToInt32(s[1]);
+           Year = System.Convert.ToInt32(s[2]);
+        }
+    }
+
     public class Node<T>
     {
         public T Item { get; set; }
@@ -29,9 +65,16 @@ namespace List
         private int itemCount;
         private Node<T> head;
 
+        public Owner owner { get; } 
+        public Date date { get; } 
         Node<T> Head { get => head; set => head = value; }
 
-        public List() => itemCount = 0;
+        public List()  
+        {
+            itemCount = 0;
+            owner = new Owner("65741796", "Artyom Orlov", "BSTU");
+            date = new Date();
+        }
 
         public bool IsEmpty()
         {
@@ -145,9 +188,9 @@ namespace List
 
         }
 
-
     }
 }
+
 
 namespace Lab4
 {
@@ -217,8 +260,9 @@ namespace Lab4
 
             A.Add(4);
             Console.WriteLine($"1 2 3 1 4, последний элемент: {System.Convert.ToString(A).LastWord()}");
-            
-           
+
+            Console.WriteLine($"{A.date.Day}.{A.date.Month}.{A.date.Year}");
+            Console.WriteLine($"{A.owner.Id}.{A.owner.Name}.{A.owner.Organization}");
 
 
 
